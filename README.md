@@ -1,4 +1,4 @@
-# shopping-list
+# ShoppingList
 This is a small React-Native shopping list app. Built for the purpose of understanding RN development and associated libraries.
 
 
