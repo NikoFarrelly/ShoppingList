@@ -1,4 +1,4 @@
-function useGetList(givenUID, lists) {
+function getList(givenUID, lists) {
     for (let list in lists) {
         if (lists[list].UID === givenUID) {
             return {Items: lists[list].Items, Title: lists[list].Title, Index: list};
@@ -6,4 +6,4 @@ function useGetList(givenUID, lists) {
     }
 }
 
-export default useGetList;
+export default getList;
