@@ -4,7 +4,7 @@ import ShoppingItem from "./components/ShoppingItem";
 import {connect} from 'react-redux';
 import {deleteList, saveList, updateList} from "./actions";
 import {bindActionCreators} from "redux";
-import useGetList from "../../components/useGetList";
+import getList from "../../functions/getList";
 import {confirmation, destructive, primaryBtnColour} from "../globalStyles";
 
 class ViewNote extends Component {
@@ -72,7 +72,7 @@ class ViewNote extends Component {
      */
     getNoteInfo(listUID) {
         const {lists} = this.props;
-        const list = useGetList(listUID, lists);
+        const list = getList(listUID, lists);
 
         this.setState({
             noteItems: list.Items,
@@ -140,7 +140,7 @@ class ViewNote extends Component {
         const {location, lists} = this.props;
         const {noteItems, noteTitle} = this.state;
         const listUID = location.state.UID;
-        const index = useGetList(listUID, lists).Index;
+        const index = getList(listUID, lists).Index;
 
         this.props.updateList([index, {Items: noteItems, Title: noteTitle, UID: listUID}]);
         // update changesMade
@@ -224,7 +224,7 @@ class ViewNote extends Component {
      */
     deleteList() {
         const {lists, location} = this.props;
-        const listToDelete = useGetList(location.state.UID, lists);
+        const listToDelete = getList(location.state.UID, lists);
 
         this.props.deleteList(listToDelete.Index);
         // put user back on the home screen
